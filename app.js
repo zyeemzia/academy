@@ -15,16 +15,17 @@
     { key: 'cyber', title: 'Cybersecurity & IT', note: 'From the help desk to security leadership', paths: ['IT Operations', 'Cybersecurity'], light: '#cf3350', dark: '#ff8296' },
     { key: 'ai', title: 'Artificial Intelligence', note: 'Build, govern and design AI systems', paths: ['AI'], light: '#7349de', dark: '#b8a0ff' },
     { key: 'lead', title: 'Leadership & Management', note: 'Projects, people and IT services', paths: ['Leadership', 'Service Management'], light: '#c97412', dark: '#f5b759' },
-    { key: 'lang', title: 'Languages & Faith', note: 'Bangla and English based, for all ages', paths: ['Languages & Faith'], light: '#0d8f64', dark: '#55d6a6' }
+    { key: 'lang', title: 'Languages', note: 'Self-paced courses, taught in English or Bangla. Take any of them, in any order.', paths: ['Languages'], light: '#0d8f64', dark: '#55d6a6' }
   ];
   const routeOf = c => ROUTES.find(r => r.paths.includes(c.path)) || ROUTES[0];
   const LEVELS = ['Beginner · Associate', 'Professional', 'Expert · Architect', 'Master'];
-  const SHORT = { 'zcie-security': 'ZCIE Sec', quranlearnarbi: 'Quran', learnfrench: 'French', learnbangla: 'Bangla', learnmandarin: 'Mandarin' };
+  const SHORT = { 'zcie-security': 'ZCIE Sec', quranlearnarbi: 'Arabic', learnfrench: 'French', learnbangla: 'Bangla', learnmandarin: 'Mandarin' };
   const label = c => SHORT[c.slug] || c.code.split(' ')[0];
   const colour = c => `data-c style="--cl:${c.accent};--cd:${c.darkAccent}"`;
   const rcolour = r => `data-r style="--rl:${r.light};--rd:${r.dark}"`;
   const site = c => `https://${c.domain}/`;
-  const ordered = list => list.slice().sort((a, b) => a.tier - b.tier);
+  // certificate routes climb by tier; language courses have no levels, so they sort by language name
+const ordered = list => list.slice().sort((a, b) => a.tier - b.tier || (a.kind === 'language' ? label(a).localeCompare(label(b)) : 0));
   const curriculum = () => C.slice().sort((a, b) => ROUTES.indexOf(routeOf(a)) - ROUTES.indexOf(routeOf(b)) || a.tier - b.tier);
 
   // ---------------- theme ----------------
@@ -54,29 +55,39 @@
   // ---------------- route map (transit-map style) ----------------
   (function map() {
     const svg = $('#map'); const NS = 'http://www.w3.org/2000/svg';
-    const X0 = 210, COL = 197, Y0 = 92, ROW = 82, W = X0 + COL * 4, H = Y0 + ROW * (ROUTES.length - 1) + 58;
+    // certificate routes sit on the level grid; languages have no levels, so they get their own strip below it
+    const X0 = 210, COL = 197, Y0 = 92, ROW = 82, W = X0 + COL * 4;
+    const LADDERS = ROUTES.filter(r => r.key !== 'lang'), GRID = Y0 + ROW * (LADDERS.length - 1) + 44;
+    const LANG_Y = GRID + 74, H = LANG_Y + 58;
+    const yOf = r => r.key === 'lang' ? LANG_Y : Y0 + LADDERS.indexOf(r) * ROW;
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
     const el = (n, a, parent) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); (parent || svg).appendChild(e); return e; };
     LEVELS.forEach((name, i) => {
-      if (i % 2) el('rect', { x: X0 + COL * i, y: 0, width: COL, height: H, class: 'col-band' });
+      if (i % 2) el('rect', { x: X0 + COL * i, y: 0, width: COL, height: GRID, class: 'col-band' });
       el('text', { x: X0 + COL * i + COL / 2, y: 36, 'text-anchor': 'middle', class: 'col-label' }).textContent = name;
     });
-    ROUTES.forEach((r, ri) => {
-      const y = Y0 + ri * ROW; const mine = ordered(C.filter(c => routeOf(c) === r)); if (!mine.length) return;
+    el('line', { x1: 22, x2: W - 22, y1: GRID + 12, y2: GRID + 12, class: 'strip-rule' });
+    el('text', { x: 22, y: GRID + 36, class: 'col-label' }).textContent = 'Languages · no levels, start any time';
+    ROUTES.forEach(r => {
+      const y = yOf(r); const mine = ordered(C.filter(c => routeOf(c) === r)); if (!mine.length) return;
       const g = el('g', {}); g.setAttribute('data-r', ''); g.setAttribute('style', `--rl:${r.light};--rd:${r.dark}`);
       el('text', { x: 22, y: y - 2, class: 'route-name' }, g).textContent = r.title.replace(' & Management', '').replace('Artificial Intelligence', 'AI');
-      el('text', { x: 22, y: y + 16, class: 'route-note' }, g).textContent = r.key === 'lang' ? 'Start any time' : `${mine.length} certificates`;
-      // stops: tiers share a column; a language route spreads across the whole line
-      const pts = r.key === 'lang'
-        ? mine.map((c, i) => ({ c, x: X0 + (COL * 4) * (i + 1) / (mine.length + 1) }))
+      el('text', { x: 22, y: y + 16, class: 'route-note' }, g).textContent = r.key === 'lang' ? `${mine.length} courses · any order` : `${mine.length} certificates`;
+      // stops: tiers share a level column; languages are separate courses, so they are spaced evenly with no line joining them
+      const LANG = r.key === 'lang';
+      const pts = LANG
+        ? mine.map((c, i) => ({ c, x: X0 + (COL * 4) * (i + 0.5) / mine.length }))
         : mine.map(c => { const same = mine.filter(o => o.tier === c.tier); const i = same.indexOf(c); return { c, x: X0 + COL * (c.tier - 1) + COL * (i + 1) / (same.length + 1) }; });
-      el('path', { d: `M${X0 - 8} ${y} H${pts[pts.length - 1].x}`, class: 'route-line' }, g);
-      el('circle', { cx: X0 - 8, cy: y, r: 6, class: 'route-tag' }, g);
+      if (!LANG) {
+        el('path', { d: `M${X0 - 8} ${y} H${pts[pts.length - 1].x}`, class: 'route-line' }, g);
+        el('circle', { cx: X0 - 8, cy: y, r: 6, class: 'route-tag' }, g);
+      }
       pts.forEach(({ c, x }, i) => {
         const s = el('g', { class: 'stop', tabindex: 0, role: 'button', 'aria-label': `${c.full}, ${c.level}. Open details`, transform: `translate(${x.toFixed(1)} ${y})` }, g);
         el('circle', { r: 10, class: 'ring' }, s); el('circle', { r: 4.5, class: 'pip' }, s);
         const crowd = pts.some((p, j) => j !== i && Math.abs(p.x - x) < 70);
         el('text', { y: crowd && i % 2 ? -19 : 30, 'text-anchor': 'middle' }, s).textContent = label(c);
+        if (LANG) el('text', { y: 46, 'text-anchor': 'middle', class: 'stop-sub' }, s).textContent = c.level;
         const tip = () => { $('#mapTip').textContent = `${c.full} · ${c.level}`; };
         s.addEventListener('mouseenter', tip); s.addEventListener('focus', tip);
         s.addEventListener('click', () => openCourse(c.slug));
@@ -88,7 +99,7 @@
   // ---------------- learning routes ----------------
   $('#routeCards').innerHTML = ROUTES.map(r => {
     const mine = ordered(C.filter(c => routeOf(c) === r)); if (!mine.length) return '';
-    return `<article class="route" ${rcolour(r)}><h3><i></i>${esc(r.title)}</h3><p>${esc(r.note)}</p><ol class="stops">${mine.map(c =>
+    return `<article class="route" ${rcolour(r)}><h3><i></i>${esc(r.title)}</h3><p>${esc(r.note)}</p><ol class="stops${r.key === 'lang' ? ' free' : ''}">${mine.map(c =>
       `<li><span class="lv">${esc(c.level)}</span><button type="button" data-open="${c.slug}"><b${c.lang ? ` lang="${c.lang}"` : ''}>${esc(c.kind === 'track' ? c.code : c.code)}</b><span>${esc(c.name)}</span></button></li>`).join('')}</ol></article>`;
   }).join('');
 
@@ -146,7 +157,7 @@
   addEventListener('hashchange', fromHash); fromHash();
 
   // ---------------- course finder ----------------
-  const GOALS = [['net', 'Build and run networks'], ['cyber', 'Keep systems safe'], ['ai', 'Work with AI'], ['lead', 'Lead projects and people'], ['itsm', 'Run IT services'], ['lang', 'Learn a language or the Quran']];
+  const GOALS = [['net', 'Build and run networks'], ['cyber', 'Keep systems safe'], ['ai', 'Work with AI'], ['lead', 'Lead projects and people'], ['itsm', 'Run IT services'], ['lang', 'Learn a language']];
   const EXP = [['new', 'I am new to this'], ['some', 'I know the basics'], ['pro', 'I have work experience']];
   const PLAN = {
     net: { new: ['zcna', 'zcnp'], some: ['zcnp', 'zcie'], pro: ['zcie', 'zcde'] },
@@ -162,7 +173,7 @@
   function renderFinder() {
     const out = $('#fResult');
     if (!goal || (!exp && goal !== 'lang')) { out.innerHTML = ''; return; }
-    if (goal === 'lang') { out.innerHTML = `<h4>Pick any of these</h4><div class="pick">${C.filter(c => c.kind === 'language').map(c => pickCard(c, c.level)).join('')}</div>`; return; }
+    if (goal === 'lang') { out.innerHTML = `<h4>Pick any of these</h4><div class="pick">${ordered(C.filter(c => c.kind === 'language')).map(c => pickCard(c, c.level)).join('')}</div>`; return; }
     const [a, b] = PLAN[goal][exp].map(bySlug).filter(Boolean);
     out.innerHTML = `<h4>Our suggestion for you</h4><div class="pick">${a ? pickCard(a, 'Start here') : ''}${b ? pickCard(b, 'Then continue with') : ''}</div>`;
   }

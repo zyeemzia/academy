@@ -7,7 +7,7 @@ An open campus for learners everywhere: 15 certification tracks in networking, c
 ## What is on the page
 
 - **Route map**: every course placed by subject and level, like a transit map.
-- **Learning routes**: five routes from beginner to master level.
+- **Learning routes**: four certificate routes from beginner to master level, plus the language courses (no levels, any order).
 - **Course catalogue**: search and filter all courses, with details, books and PDFs.
 - **Where to start**: two questions suggest a first course and the next one.
 - **Check a certificate**: confirms any ZyeemZia certificate ID with the ZyeemZia server.

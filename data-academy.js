@@ -4,7 +4,7 @@ window.ZZ_ACADEMY = {
  "stats": {
   "courses": 19,
   "tracks": 15,
-  "lessons": 828,
+  "lessons": 829,
   "modules": 120
  },
  "courses": [
@@ -1133,61 +1133,61 @@ window.ZZ_ACADEMY = {
    "slug": "zpmp",
    "kind": "track",
    "code": "ZPMP",
-   "name": "Project Management Protocol",
-   "full": "ZyeemZia™ Project Management Protocol (ZPMP)",
+   "name": "Project Management Professional",
+   "full": "ZyeemZia™ Project Management Professional (ZPMP)",
    "domain": "zpmp.zyeemzia.com",
    "path": "Leadership",
    "tier": 2,
    "level": "Professional",
-   "blurb": "Value-driven, agile and hybrid project management with AI.",
-   "tagline": "Deliver value, not just plans.",
-   "hours": "40–50",
+   "blurb": "People, process and business environment, aligned to the PMP exam outline topics.",
+   "tagline": "Lead people, run the process, master the business environment.",
+   "hours": "45–55",
    "audience": [
-    "Project and programme managers",
-    "Team leads and Scrum Masters",
-    "Engineers and analysts moving into delivery roles",
-    "Founders and NGO managers running initiatives"
+    "Project and programme managers preparing for professional-level practice",
+    "Agile delivery leads, product owners and Scrum Masters",
+    "Engineers, analysts and consultants moving into delivery roles",
+    "PMO staff, founders and NGO managers running initiatives"
    ],
-   "lessons": 39,
+   "lessons": 40,
    "modules": [
     {
      "code": "Frame",
-     "title": "Foundations of Modern Project Management & Value",
-     "lessons": 5
-    },
-    {
-     "code": "Shape",
-     "title": "Stakeholders, Scope & Requirements",
-     "lessons": 5
-    },
-    {
-     "code": "Plan",
-     "title": "Estimation, Scheduling & Budgeting",
-     "lessons": 5
-    },
-    {
-     "code": "Deliver",
-     "title": "Agile, Hybrid & Quality Execution",
-     "lessons": 5
-    },
-    {
-     "code": "Steer",
-     "title": "Steer — Risk, Performance & Control",
+     "title": "Foundations: Value, Approaches & the PMP® Outline",
      "lessons": 5
     },
     {
      "code": "Lead",
-     "title": "Lead — People, Teams & Communication",
+     "title": "People I: Leading the Project Team",
      "lessons": 5
     },
     {
-     "code": "Scale",
-     "title": "Scale — AI-Powered Project Management, Change & Governance",
-     "lessons": 4
+     "code": "Engage",
+     "title": "People II: Stakeholders, Expectations, Knowledge & Communication",
+     "lessons": 5
     },
     {
-     "code": "Close",
-     "title": "Close — Closing, Benefits, Ethics & Certification Readiness",
+     "code": "Plan",
+     "title": "Process I: Integrated Planning, Scope & Value",
+     "lessons": 5
+    },
+    {
+     "code": "Resource",
+     "title": "Process II: Schedule, Resources & Finance",
+     "lessons": 5
+    },
+    {
+     "code": "Deliver",
+     "title": "Process III: Procurement, Quality, Status & Closure",
+     "lessons": 5
+    },
+    {
+     "code": "Govern",
+     "title": "Business Environment I: Governance, Compliance, Change & Risk",
+     "lessons": 5
+    },
+    {
+     "code": "Adapt",
+     "title": "Business Environment II: Impediments, Improvement, Change & the Outside World",
      "lessons": 5
     }
    ],
@@ -1197,13 +1197,13 @@ window.ZZ_ACADEMY = {
     "pass": 80,
     "distinction": 90
    },
-   "capstone": "Capstone: Run a project through the ZPMP Value Loop",
+   "capstone": "Capstone: Run a project through the ZPMP Professional Loop",
    "skills": [
-    "Value-driven planning",
-    "Agile & hybrid delivery",
-    "Risk & earned value",
-    "Leadership & communication",
-    "AI-powered project management"
+    "Leading teams & engaging stakeholders",
+    "Integrated, value-based planning",
+    "Predictive, agile & hybrid delivery",
+    "Governance, compliance & risk",
+    "Adapting to change, AI & sustainability"
    ],
    "pdf": "ZPMP-Book.pdf",
    "accent": "#ba3d0c",
@@ -1216,7 +1216,7 @@ window.ZZ_ACADEMY = {
    "name": "Quran & Arabic Learning",
    "full": "Quran & Arabic Learning (Bangla + English)",
    "domain": "quranlearnarbi.zyeemzia.com",
-   "path": "Languages & Faith",
+   "path": "Languages",
    "tier": 1,
    "level": "All levels",
    "blurb": "Read the Quran and write Arabic in Bangla and English: letters to fluent reading, tajweed, word-by-word surahs and a handwriting workbook.",
@@ -1233,7 +1233,7 @@ window.ZZ_ACADEMY = {
    "name": "Learn French",
    "full": "Learn French · English to French",
    "domain": "learnfrench.zyeemzia.com",
-   "path": "Languages & Faith",
+   "path": "Languages",
    "tier": 1,
    "level": "Beginner",
    "blurb": "Easy French for English speakers: sounds and spelling, first words, grammar made easy, everyday conversations and short stories.",
@@ -1250,7 +1250,7 @@ window.ZZ_ACADEMY = {
    "name": "Learn Bangla",
    "full": "Learn Bangla · English to Bangla",
    "domain": "learnbangla.zyeemzia.com",
-   "path": "Languages & Faith",
+   "path": "Languages",
    "tier": 1,
    "level": "Beginner",
    "blurb": "Easy Bangla for English speakers: read and write the Bangla script, speak at the bazaar and with family, grammar, stories and culture.",
@@ -1267,7 +1267,7 @@ window.ZZ_ACADEMY = {
    "name": "Learn Mandarin",
    "full": "Learn Mandarin · English to Mandarin",
    "domain": "learnmandarin.zyeemzia.com",
-   "path": "Languages & Faith",
+   "path": "Languages",
    "tier": 1,
    "level": "Beginner",
    "blurb": "Easy Mandarin Chinese for English speakers: pinyin and tones, characters with real stroke order, grammar, conversations and culture.",
