@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZyeemZia™ Academy · Free Courses & Certificates for Everyone</title>
+<meta name="description" content="ZyeemZia™ Academy is an open campus with 19 free courses: 15 certification tracks in networking, cybersecurity, AI, leadership and IT service management, plus Quran, French, Bangla and Mandarin. Fair online exams and certificates anyone can verify.">
+<meta property="og:title" content="ZyeemZia™ Academy · Learn without borders">
+<meta property="og:description" content="19 free courses and certification tracks, with fair online exams and certificates anyone can verify.">
+<meta property="og:url" content="https://academy.zyeemzia.com/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://academy.zyeemzia.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://academy.zyeemzia.com/">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#fbf8f2">
+<script>try{var t=localStorage.getItem('zzAcademyTheme');if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://zyeemzia.com/transmit.css?v=3">
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="ZyeemZia Academy home">
+      <span class="seal"><img src="img/z-mark.webp" width="40" height="40" alt=""></span>
+      <span><b>ZyeemZia™ Academy</b><small>Open campus · free for everyone</small></span>
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#routes">Routes</a><a href="#catalogue">Courses</a><a href="#finder">Where to start</a><a href="#verify">Check a certificate</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="mode" id="modeBtn" type="button" aria-label="Switch between light and dark theme">
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span> Open learning for every country and every age</p>
+          <h1>Learn without borders. <em>Earn proof that travels.</em></h1>
+          <p class="lead">Fifteen certification tracks in networking, cybersecurity, AI, leadership and IT service management, and four language and faith courses. Study at your own pace, sit a fair online exam, and receive a certificate anyone in the world can check. Always free.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#finder">Find where to start</a>
+            <a class="btn ghost" href="#catalogue">See all <span data-stat="courses">19</span> courses</a>
+          </div>
+        </div>
+        <dl class="stats" id="stats"></dl>
+      </div>
+
+      <figure class="routemap" aria-labelledby="mapTitle">
+        <figcaption class="map-head">
+          <span id="mapTitle"><b>Route map</b> Every course, placed by subject and level</span>
+          <span class="map-tip" id="mapTip" aria-live="polite">Select a stop to see the course.</span>
+        </figcaption>
+        <div class="map-scroll"><svg id="map" role="group" aria-label="Course route map"></svg></div>
+        <p class="map-swipe" aria-hidden="true">Swipe the map to see every level →</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="routes" aria-labelledby="routesTitle">
+    <div class="wrap">
+      <p class="eyebrow">Learning routes</p>
+      <h2 id="routesTitle">Five routes, one step at a time</h2>
+      <p class="sub">Each route starts with the basics and climbs to expert or master level. Every stop has its own lessons, book, exam and certificate, so you can begin where you are today.</p>
+      <div id="routeCards" class="route-cards"></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="catalogue" aria-labelledby="catalogueTitle">
+    <div class="wrap">
+      <p class="eyebrow">Course catalogue</p>
+      <h2 id="catalogueTitle">All courses in one place</h2>
+      <div class="toolbar">
+        <label class="search"><span class="sr">Search courses</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search a course, skill or topic" autocomplete="off"></label>
+        <label class="lvl"><span class="sr">Filter by level</span><select id="lvl"><option value="">All levels</option><option value="1">Beginner &amp; associate</option><option value="2">Professional</option><option value="3">Expert &amp; architect</option><option value="4">Master</option></select></label>
+      </div>
+      <div class="chips" id="pathChips" role="group" aria-label="Filter by route"></div>
+      <p class="count" id="count" aria-live="polite"></p>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="block" id="finder" aria-labelledby="finderTitle">
+    <div class="wrap finder">
+      <div>
+        <p class="eyebrow">Where to start</p>
+        <h2 id="finderTitle">Not sure which course is yours?</h2>
+        <p class="sub">Answer two short questions and we will suggest a first course and the one to take after it.</p>
+      </div>
+      <div class="finder-card">
+        <fieldset><legend>1. What would you like to do?</legend><div class="chips" id="fGoal"></div></fieldset>
+        <fieldset><legend>2. How much do you know already?</legend><div class="chips" id="fExp"></div></fieldset>
+        <div id="fResult" class="f-result" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="how" aria-labelledby="howTitle">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2 id="howTitle">From the first lesson to a certificate</h2>
+      <ol class="steps">
+        <li><b>Learn</b><span>Clear lessons with real examples, case studies and templates, plus a printable book and PDF for every track.</span></li>
+        <li><b>Practise</b><span>Quizzes, flashcards and a practice exam, with every answer explained so you learn from mistakes.</span></li>
+        <li><b>Take the exam</b><span>A timed online exam with fresh questions, marked on the ZyeemZia server so every result is fair.</span></li>
+        <li><b>Share your certificate</b><span>Get a certificate with its own ID. Anyone can check it on this page, and you can add it to LinkedIn.</span></li>
+      </ol>
+      <ul class="promise">
+        <li><b>Free for everyone.</b> No fees and no adverts on any course.</li>
+        <li><b>Private by design.</b> Progress stays on your device. Google sign-in is optional, only to continue on another device.</li>
+        <li><b>Works offline.</b> After your first visit, courses keep working without a connection.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="verify" aria-labelledby="verifyTitle">
+    <div class="wrap verify">
+      <div>
+        <p class="eyebrow">Certificate check</p>
+        <h2 id="verifyTitle">Check a certificate</h2>
+        <p class="sub">Employers, schools and friends can confirm a ZyeemZia certificate here. Enter its ID, for example ZPMP-20261019-7K2QXM.</p>
+      </div>
+      <form id="vForm" class="v-form" autocomplete="off">
+        <label class="sr" for="vId">Certificate ID</label>
+        <div class="v-row"><input id="vId" type="text" placeholder="Certificate ID" spellcheck="false" autocapitalize="characters" required><button class="btn primary" type="submit">Check</button></div>
+        <div id="vOut" class="v-out" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="block alt" id="contact-block">
+    <div class="wrap">
+      <section class="tx-mount" id="contact" data-tx-tone="civil" data-tx-topic="academy" data-tx-dark='html[data-theme="dark"]' data-tx-light='html[data-theme="light"]' data-tx-auto="media"
+        data-tx-source="academy.zyeemzia.com · Academy" data-tx-lead="Questions about a course, an exam, a certificate or working together? Write to us and we will reply by email."></section>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="signoff"><img src="img/signature-gold-sm.webp" width="480" height="185" alt="" loading="lazy"><span>Copyright © ZyeemZia</span></div>
+    <nav aria-label="More from ZyeemZia"><a href="https://zyeemzia.com/" target="_blank" rel="noopener">zyeemzia.com</a><a href="https://policy.zyeemzia.com/" target="_blank" rel="noopener">Trust Center &amp; privacy</a><a href="#verify">Check a certificate</a><a href="#contact">Contact</a></nav>
+    <p class="fine">This page sets no cookies and uses no analytics; your light or dark choice is kept only in your browser. ZyeemZia™ Academy courses are independent and are not affiliated with any other certifying body.</p>
+  </div>
+</footer>
+
+<dialog id="drawer" class="drawer" aria-labelledby="dTitle"><div class="d-in" id="dBody"></div></dialog>
+
+<script src="data-academy.js?v=1"></script>
+<script src="app.js?v=2"></script>
+<script src="https://zyeemzia.com/transmit.js?v=4" defer></script>
+</body>
+</html>
