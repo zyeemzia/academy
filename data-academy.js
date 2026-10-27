@@ -2,10 +2,10 @@
 window.ZZ_ACADEMY = {
  "generated": "2026-10-19",
  "stats": {
-  "courses": 19,
-  "tracks": 15,
-  "lessons": 829,
-  "modules": 120
+  "courses": 20,
+  "tracks": 16,
+  "lessons": 867,
+  "modules": 130
  },
  "courses": [
   {
@@ -1208,6 +1208,55 @@ window.ZZ_ACADEMY = {
    "pdf": "ZPMP-Book.pdf",
    "accent": "#ba3d0c",
    "darkAccent": "#ff7a3d"
+  },
+  {
+   "slug": "totihl",
+   "kind": "track",
+   "code": "TOT-IHL",
+   "name": "Training of Trainers on International Humanitarian Law",
+   "full": "ZyeemZia™ Training of Trainers (TOT) on International Humanitarian Law (IHL)",
+   "domain": "totihl.zyeemzia.com",
+   "path": "Humanitarian Law",
+   "tier": 2,
+   "level": "Professional",
+   "blurb": "Geneva Conventions, distinction, proportionality and precaution, targeting, command responsibility, UN peace operations and civilian harm mitigation, plus how to teach it all.",
+   "tagline": "Even wars have limits. Teach them.",
+   "hours": "30–40",
+   "audience": [
+    "Military officers and instructors preparing to teach IHL",
+    "Legal advisers (LEGADs), CIMIC and public affairs officers",
+    "Peacekeepers deploying to UN missions",
+    "Police, academics, students and humanitarian professionals"
+   ],
+   "lessons": 38,
+   "modules": [
+    { "code": "Foundations", "title": "Foundations of IHL", "lessons": 5 },
+    { "code": "Principles", "title": "The Principles of IHL", "lessons": 5 },
+    { "code": "Status", "title": "Persons, Objects & Signs", "lessons": 3 },
+    { "code": "Conduct", "title": "Conduct of Operations", "lessons": 4 },
+    { "code": "Operations", "title": "IHL in Military Operations & Targeting", "lessons": 5 },
+    { "code": "Command", "title": "Command Responsibility & War Crimes", "lessons": 4 },
+    { "code": "Peacekeeping", "title": "IHL in UN Peace Operations", "lessons": 3 },
+    { "code": "Civilians", "title": "Civilian-Centric Operations & CIVCAS Mitigation", "lessons": 3 },
+    { "code": "Integrate", "title": "Integrating the Law: From Knowledge to Behaviour", "lessons": 3 },
+    { "code": "Trainer", "title": "The IHL Trainer's Toolkit & 2026 Updates", "lessons": 3 }
+   ],
+   "exam": {
+    "size": 40,
+    "minutes": 60,
+    "pass": 80,
+    "distinction": 90
+   },
+   "capstone": "Capstone: Write the MOGADI civilian-considerations annex and deliver an IHL lesson",
+   "skills": [
+    "Geneva Conventions & customary IHL",
+    "Distinction, proportionality & precaution",
+    "Targeting & command responsibility",
+    "IHL in UN peace operations",
+    "Training others in IHL"
+   ],
+   "accent": "#c8102e",
+   "darkAccent": "#ff6b74"
   },
   {
    "slug": "quranlearnarbi",

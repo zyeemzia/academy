@@ -15,6 +15,7 @@
     { key: 'cyber', title: 'Cybersecurity & IT', note: 'From the help desk to security leadership', paths: ['IT Operations', 'Cybersecurity'], light: '#cf3350', dark: '#ff8296' },
     { key: 'ai', title: 'Artificial Intelligence', note: 'Build, govern and design AI systems', paths: ['AI'], light: '#7349de', dark: '#b8a0ff' },
     { key: 'lead', title: 'Leadership & Management', note: 'Projects, people and IT services', paths: ['Leadership', 'Service Management'], light: '#c97412', dark: '#f5b759' },
+    { key: 'ihl', title: 'Humanitarian Law & Peace Operations', note: 'The law of armed conflict, and how to teach it', paths: ['Humanitarian Law'], light: '#c8102e', dark: '#ff6b74' },
     { key: 'lang', title: 'Languages', note: 'Self-paced courses, taught in English or Bangla. Take any of them, in any order.', paths: ['Languages'], light: '#0d8f64', dark: '#55d6a6' }
   ];
   const routeOf = c => ROUTES.find(r => r.paths.includes(c.path)) || ROUTES[0];
@@ -71,7 +72,7 @@ const ordered = list => list.slice().sort((a, b) => a.tier - b.tier || (a.kind =
     ROUTES.forEach(r => {
       const y = yOf(r); const mine = ordered(C.filter(c => routeOf(c) === r)); if (!mine.length) return;
       const g = el('g', {}); g.setAttribute('data-r', ''); g.setAttribute('style', `--rl:${r.light};--rd:${r.dark}`);
-      el('text', { x: 22, y: y - 2, class: 'route-name' }, g).textContent = r.title.replace(' & Management', '').replace('Artificial Intelligence', 'AI');
+      el('text', { x: 22, y: y - 2, class: 'route-name' }, g).textContent = r.title.replace(' & Management', '').replace(' & Peace Operations', '').replace('Artificial Intelligence', 'AI');
       el('text', { x: 22, y: y + 16, class: 'route-note' }, g).textContent = r.key === 'lang' ? `${mine.length} courses · any order` : `${mine.length} certificates`;
       // stops: tiers share a level column; languages are separate courses, so they are spaced evenly with no line joining them
       const LANG = r.key === 'lang';
@@ -157,14 +158,15 @@ const ordered = list => list.slice().sort((a, b) => a.tier - b.tier || (a.kind =
   addEventListener('hashchange', fromHash); fromHash();
 
   // ---------------- course finder ----------------
-  const GOALS = [['net', 'Build and run networks'], ['cyber', 'Keep systems safe'], ['ai', 'Work with AI'], ['lead', 'Lead projects and people'], ['itsm', 'Run IT services'], ['lang', 'Learn a language']];
+  const GOALS = [['net', 'Build and run networks'], ['cyber', 'Keep systems safe'], ['ai', 'Work with AI'], ['lead', 'Lead projects and people'], ['itsm', 'Run IT services'], ['ihl', 'Teach the law of war (IHL)'], ['lang', 'Learn a language']];
   const EXP = [['new', 'I am new to this'], ['some', 'I know the basics'], ['pro', 'I have work experience']];
   const PLAN = {
     net: { new: ['zcna', 'zcnp'], some: ['zcnp', 'zcie'], pro: ['zcie', 'zcde'] },
     cyber: { new: ['zitss', 'zcss'], some: ['zcss', 'zcstg'], pro: ['zcstg', 'zcie-security'] },
     ai: { new: ['zmls', 'zaig'], some: ['zmls', 'zaia'], pro: ['zaia', 'zaig'] },
     lead: { new: ['zpmp', 'zhrls'], some: ['zpmp', 'zepms'], pro: ['zepms', 'zitil'] },
-    itsm: { new: ['zitss', 'zitil'], some: ['zitss', 'zitil'], pro: ['zitil', 'zcstg'] }
+    itsm: { new: ['zitss', 'zitil'], some: ['zitss', 'zitil'], pro: ['zitil', 'zcstg'] },
+    ihl: { new: ['totihl'], some: ['totihl'], pro: ['totihl'] }
   };
   let goal = '', exp = '';
   $('#fGoal').innerHTML = GOALS.map(([k, t]) => `<button type="button" data-goal="${k}" aria-pressed="false">${esc(t)}</button>`).join('');
