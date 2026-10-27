@@ -1219,7 +1219,7 @@ window.ZZ_ACADEMY = {
    "path": "Humanitarian Law",
    "tier": 2,
    "level": "Professional",
-   "blurb": "Geneva Conventions, distinction, proportionality and precaution, targeting, command responsibility, UN peace operations and civilian harm mitigation, plus how to teach it all.",
+   "blurb": "Geneva Conventions, distinction, proportionality and precaution, targeting, command responsibility, UN peace operations and civilian harm mitigation, plus how to teach it all. Available in English, বাংলা (Bangla) and Français (French).",
    "tagline": "Even wars have limits. Teach them.",
    "hours": "30–40",
    "audience": [
