@@ -15,7 +15,7 @@
     { key: 'cyber', title: 'Cybersecurity & IT', note: 'From the help desk to security leadership', paths: ['IT Operations', 'Cybersecurity'], light: '#cf3350', dark: '#ff8296' },
     { key: 'ai', title: 'Artificial Intelligence', note: 'Build, govern and design AI systems', paths: ['AI'], light: '#7349de', dark: '#b8a0ff' },
     { key: 'lead', title: 'Leadership & Management', note: 'Projects, people and IT services', paths: ['Leadership', 'Service Management'], light: '#c97412', dark: '#f5b759' },
-    { key: 'ihl', title: 'Law, Humanitarian Law & Peace Operations', note: 'IHL, Bangladesh law and UN law, and how to teach them', paths: ['Humanitarian Law'], light: '#c8102e', dark: '#ff6b74' },
+    { key: 'ihl', title: 'Law & Peace Operations', note: 'Humanitarian law, the UN and Bangladesh legal systems, and how to teach them', paths: ['Humanitarian Law'], light: '#c8102e', dark: '#ff6b74' },
     { key: 'lang', title: 'Languages', note: 'Self-paced courses, taught in English or Bangla. Take any of them, in any order.', paths: ['Languages'], light: '#0d8f64', dark: '#55d6a6' }
   ];
   const routeOf = c => ROUTES.find(r => r.paths.includes(c.path)) || ROUTES[0];
@@ -158,7 +158,7 @@ const ordered = list => list.slice().sort((a, b) => a.tier - b.tier || (a.kind =
   addEventListener('hashchange', fromHash); fromHash();
 
   // ---------------- course finder ----------------
-  const GOALS = [['net', 'Build and run networks'], ['cyber', 'Keep systems safe'], ['ai', 'Work with AI'], ['lead', 'Lead projects and people'], ['itsm', 'Run IT services'], ['ihl', 'Learn or teach law (IHL, Bangladesh & UN law)'], ['lang', 'Learn a language']];
+  const GOALS = [['net', 'Build and run networks'], ['cyber', 'Keep systems safe'], ['ai', 'Work with AI'], ['lead', 'Lead projects and people'], ['itsm', 'Run IT services'], ['ihl', 'Learn or teach law (IHL, UN & Bangladesh legal systems)'], ['lang', 'Learn a language']];
   const EXP = [['new', 'I am new to this'], ['some', 'I know the basics'], ['pro', 'I have work experience']];
   const PLAN = {
     net: { new: ['zcna', 'zcnp'], some: ['zcnp', 'zcie'], pro: ['zcie', 'zcde'] },
