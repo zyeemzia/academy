@@ -2,10 +2,10 @@
 window.ZZ_ACADEMY = {
  "generated": "2026-10-19",
  "stats": {
-  "courses": 20,
-  "tracks": 16,
-  "lessons": 867,
-  "modules": 130
+  "courses": 22,
+  "tracks": 18,
+  "lessons": 940,
+  "modules": 153
  },
  "courses": [
   {
@@ -1307,6 +1307,41 @@ window.ZZ_ACADEMY = {
    ],
    "accent": "#006a4e",
    "darkAccent": "#3fcf8e"
+  },
+  {
+   "slug": "unlegal",
+   "kind": "track",
+   "code": "UN-LEGAL",
+   "name": "United Nations Legal System",
+   "full": "ZyeemZia™ United Nations Legal System",
+   "domain": "unlegalsystem.zyeemzia.com",
+   "path": "Humanitarian Law",
+   "tier": 2,
+   "level": "Professional",
+   "blurb": "The UN Charter and organs, peace and security, military law of UN operations, police and civilian pillars, immunities, accountability, courts, human rights, humanitarian action and law-making, updated to 2026. Available in English, বাংলা (Bangla) and Français (French).",
+   "tagline": "From the Charter to the checkpoint.",
+   "hours": "30–40",
+   "audience": ["Military officers and peacekeepers","UN police and civilian staff","Diplomats, lawyers and students","NGO workers and trainers"],
+   "lessons": 37,
+   "modules": [
+    { "code": "Foundations", "title": "Foundations and the Charter", "lessons": 3 },
+    { "code": "Organs", "title": "The UN Organs", "lessons": 3 },
+    { "code": "Peace", "title": "Peace and Security", "lessons": 3 },
+    { "code": "Military", "title": "Military Law of UN Operations", "lessons": 4 },
+    { "code": "Police-Civil", "title": "Police and Civilian Pillars", "lessons": 3 },
+    { "code": "Status", "title": "Status and Immunities", "lessons": 3 },
+    { "code": "Accountability", "title": "Accountability and Internal Justice", "lessons": 3 },
+    { "code": "Courts", "title": "Courts and Tribunals", "lessons": 3 },
+    { "code": "Rights", "title": "Human Rights", "lessons": 3 },
+    { "code": "Humanitarian", "title": "The Humanitarian System", "lessons": 3 },
+    { "code": "Law-making", "title": "Law-making", "lessons": 3 },
+    { "code": "Trainer", "title": "Trainer's Toolkit & What Changed to 2026", "lessons": 3 }
+   ],
+   "exam": { "size": 40, "minutes": 60, "pass": 80, "distinction": 90 },
+   "capstone": "Capstone: A legal brief for a mission's Head of Mission and Force Commander, and teach it",
+   "skills": ["UN Charter & organs","Rules of Engagement & use of force","SOFA, immunities & accountability","UN courts & human rights","Teaching UN law to others"],
+   "accent": "#1f6fb5",
+   "darkAccent": "#7ab6f0"
   },
   {
    "slug": "quranlearnarbi",

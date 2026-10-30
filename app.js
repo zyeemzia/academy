@@ -158,7 +158,7 @@ const ordered = list => list.slice().sort((a, b) => a.tier - b.tier || (a.kind =
   addEventListener('hashchange', fromHash); fromHash();
 
   // ---------------- course finder ----------------
-  const GOALS = [['net', 'Build and run networks'], ['cyber', 'Keep systems safe'], ['ai', 'Work with AI'], ['lead', 'Lead projects and people'], ['itsm', 'Run IT services'], ['ihl', 'Learn or teach law (IHL, UN & Bangladesh legal systems)'], ['lang', 'Learn a language']];
+  const GOALS = [['net', 'Build and run networks'], ['cyber', 'Keep systems safe'], ['ai', 'Work with AI'], ['lead', 'Lead projects and people'], ['itsm', 'Run IT services'], ['ihl', 'Learn or teach law (IHL, UN and Bangladesh)'], ['lang', 'Learn a language']];
   const EXP = [['new', 'I am new to this'], ['some', 'I know the basics'], ['pro', 'I have work experience']];
   const PLAN = {
     net: { new: ['zcna', 'zcnp'], some: ['zcnp', 'zcie'], pro: ['zcie', 'zcde'] },
@@ -166,7 +166,7 @@ const ordered = list => list.slice().sort((a, b) => a.tier - b.tier || (a.kind =
     ai: { new: ['zmls', 'zaig'], some: ['zmls', 'zaia'], pro: ['zaia', 'zaig'] },
     lead: { new: ['zpmp', 'zhrls'], some: ['zpmp', 'zepms'], pro: ['zepms', 'zitil'] },
     itsm: { new: ['zitss', 'zitil'], some: ['zitss', 'zitil'], pro: ['zitil', 'zcstg'] },
-    ihl: { new: ['unbdlaw', 'totihl'], some: ['unbdlaw', 'totihl'], pro: ['totihl', 'unbdlaw'] }
+    ihl: { new: ['unlegal', 'unbdlaw'], some: ['unlegal', 'totihl'], pro: ['totihl', 'unlegal'] }
   };
   let goal = '', exp = '';
   $('#fGoal').innerHTML = GOALS.map(([k, t]) => `<button type="button" data-goal="${k}" aria-pressed="false">${esc(t)}</button>`).join('');
