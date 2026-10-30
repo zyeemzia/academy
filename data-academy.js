@@ -1259,6 +1259,56 @@ window.ZZ_ACADEMY = {
    "darkAccent": "#ff6b74"
   },
   {
+   "slug": "unbdlaw",
+   "kind": "track",
+   "code": "UNBD-LAW",
+   "name": "Bangladesh Law & United Nations Law",
+   "full": "ZyeemZia™ Bangladesh Law & United Nations Law",
+   "domain": "unbdlaw.zyeemzia.com",
+   "path": "Humanitarian Law",
+   "tier": 2,
+   "level": "Professional",
+   "blurb": "Bangladesh’s legal system and Constitution, criminal and civil law, judicial review, the UN Charter, human rights, UN peacekeeping and international law, plus a full legal-systems map. Available in English, বাংলা (Bangla) and Français (French).",
+   "tagline": "One Constitution, one Charter. Know both, teach both.",
+   "hours": "30–40",
+   "audience": [
+    "Law students, lawyers and civil servants",
+    "Police, military officers and UN peacekeepers",
+    "UN, NGO and development professionals",
+    "Journalists, trainers and international learners"
+   ],
+   "lessons": 36,
+   "modules": [
+    { "code": "Foundations", "title": "The Bangladesh Legal System", "lessons": 3 },
+    { "code": "Constitution", "title": "The Constitution and the 2024–2026 Reforms", "lessons": 3 },
+    { "code": "Criminal", "title": "Criminal Law and Justice", "lessons": 4 },
+    { "code": "Civil", "title": "Civil, Family, Business and Environmental Law", "lessons": 3 },
+    { "code": "Rights", "title": "Judicial Review, Rights and Independent Bodies", "lessons": 3 },
+    { "code": "UN Charter", "title": "The UN Charter and International Law", "lessons": 3 },
+    { "code": "Human Rights", "title": "International Human Rights and Bangladesh", "lessons": 3 },
+    { "code": "Peace Ops", "title": "UN Peace Operations Law", "lessons": 3 },
+    { "code": "International", "title": "International Law in Bangladesh Practice", "lessons": 4 },
+    { "code": "Trainer", "title": "Trainer's Toolkit & 2026 Updates", "lessons": 3 },
+    { "code": "Systems", "title": "Legal Systems Map: Bangladesh and the UN", "lessons": 4 }
+   ],
+   "exam": {
+    "size": 40,
+    "minutes": 60,
+    "pass": 80,
+    "distinction": 90
+   },
+   "capstone": "Capstone: Write a legal opinion combining Bangladesh and UN law, and teach it",
+   "skills": [
+    "Bangladesh Constitution & courts",
+    "Criminal, civil & family law",
+    "Judicial review & writs",
+    "UN Charter, human rights & peacekeeping law",
+    "Teaching law to others"
+   ],
+   "accent": "#006a4e",
+   "darkAccent": "#3fcf8e"
+  },
+  {
    "slug": "quranlearnarbi",
    "kind": "language",
    "code": "কুরআন ও আরবি শিক্ষা",
