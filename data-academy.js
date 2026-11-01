@@ -2,10 +2,10 @@
 window.ZZ_ACADEMY = {
  "generated": "2026-10-19",
  "stats": {
-  "courses": 22,
-  "tracks": 18,
-  "lessons": 940,
-  "modules": 153
+  "courses": 23,
+  "tracks": 19,
+  "lessons": 976,
+  "modules": 165
  },
  "courses": [
   {
