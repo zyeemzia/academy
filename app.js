@@ -166,7 +166,7 @@ const ordered = list => list.slice().sort((a, b) => a.tier - b.tier || (a.kind =
     ai: { new: ['zmls', 'zaig'], some: ['zmls', 'zaia'], pro: ['zaia', 'zaig'] },
     lead: { new: ['zpmp', 'zhrls'], some: ['zpmp', 'zepms'], pro: ['zepms', 'zitil'] },
     itsm: { new: ['zitss', 'zitil'], some: ['zitss', 'zitil'], pro: ['zitil', 'zcstg'] },
-    ihl: { new: ['unlegal', 'unbdlaw'], some: ['unlegal', 'unpki'], pro: ['unpki', 'unlegal'] }
+    ihl: { new: ['unlegal', 'unbdlaw'], some: ['unpki', 'unmpki'], pro: ['unmpki', 'unpki'] }
   };
   let goal = '', exp = '';
   $('#fGoal').innerHTML = GOALS.map(([k, t]) => `<button type="button" data-goal="${k}" aria-pressed="false">${esc(t)}</button>`).join('');
