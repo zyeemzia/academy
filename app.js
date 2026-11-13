@@ -20,7 +20,7 @@
   ];
   const routeOf = c => ROUTES.find(r => r.paths.includes(c.path)) || ROUTES[0];
   const LEVELS = ['Beginner · Associate', 'Professional', 'Expert · Architect', 'Master'];
-  const SHORT = { 'zcie-security': 'ZCIE Sec', quranlearnarbi: 'Arabic', learnfrench: 'French', learnbangla: 'Bangla', learnmandarin: 'Mandarin' };
+  const SHORT = { 'zcie-security': 'ZCIE Sec', quranlearnarbi: 'Arabic', frenchpro: 'French Pro', learnfrench: 'French', learnbangla: 'Bangla', learnmandarin: 'Mandarin' };
   const label = c => SHORT[c.slug] || c.code.split(' ')[0];
   const colour = c => `data-c style="--cl:${c.accent};--cd:${c.darkAccent}"`;
   const rcolour = r => `data-r style="--rl:${r.light};--rd:${r.dark}"`;

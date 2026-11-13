@@ -2,9 +2,9 @@
 window.ZZ_ACADEMY = {
  "generated": "2026-10-19",
  "stats": {
-  "courses": 23,
+  "courses": 24,
   "tracks": 19,
-  "lessons": 976,
+  "lessons": 1018,
   "modules": 165
  },
  "courses": [
@@ -1446,6 +1446,23 @@ window.ZZ_ACADEMY = {
    "accent": "#2563eb",
    "darkAccent": "#60a5fa",
    "extra": "Writing workbook · native voices"
+  },
+  {
+   "slug": "frenchpro",
+   "kind": "language",
+   "code": "Le français avancé",
+   "name": "French Pro",
+   "full": "French Pro · Advanced French for Bengali learners",
+   "domain": "frenchpro.zyeemzia.com",
+   "path": "Languages",
+   "tier": 2,
+   "level": "Advanced",
+   "blurb": "Advanced French taught in English and Bangla: pronunciation mastery, the full grammar engine, every tense from présent to subjonctif, professional French, letters and a CV.",
+   "lessons": 42,
+   "lang": "fr",
+   "accent": "#7a1f2b",
+   "darkAccent": "#e8a0a8",
+   "extra": "Printable book · native voices"
   },
   {
    "slug": "learnbangla",
