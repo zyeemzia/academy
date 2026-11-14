@@ -4,7 +4,7 @@ window.ZZ_ACADEMY = {
  "stats": {
   "courses": 24,
   "tracks": 19,
-  "lessons": 1018,
+  "lessons": 1094,
   "modules": 165
  },
  "courses": [
@@ -1457,8 +1457,8 @@ window.ZZ_ACADEMY = {
    "path": "Languages",
    "tier": 2,
    "level": "Advanced",
-   "blurb": "Advanced French taught in English and Bangla: pronunciation mastery, the full grammar engine, every tense from présent to subjonctif, professional French, letters and a CV.",
-   "lessons": 42,
+   "blurb": "Advanced French taught in English and Bangla: pronunciation mastery, the full grammar engine, every tense from présent to subjonctif, professional French, letters and a CV, and a trilingual French–Bangla–English dictionary of more than 2,200 entries.",
+   "lessons": 118,
    "lang": "fr",
    "accent": "#7a1f2b",
    "darkAccent": "#e8a0a8",
