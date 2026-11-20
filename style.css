@@ -269,3 +269,15 @@ button, input, select { font: inherit; color: inherit; }
 #contact.tx::before { background: linear-gradient(90deg, #0b7fc0, #cf3350, #7349de, #c97412, #0d8f64); }
 #contact.tx .tx-send { background: var(--brand); color: var(--on-brand); text-transform: none; letter-spacing: 0; }
 #contact.tx .tx-send:hover { background: var(--brand-2); }
+
+/* install button (zz-app.js) */
+.nav-install { display: contents; }
+.nav .zz-btn { color: var(--ink); border-color: var(--line-2); background: var(--panel); flex: none; }
+@media (max-width: 960px) {
+  /* brand, install and theme share the first row; the brand gives way first */
+  .nav .zz-btn { width: 40px; height: 40px; padding: 0; justify-content: center; margin-left: auto; }
+  .nav .zz-btn span { display: none; }
+  .nav .zz-btn:not([hidden]) ~ .mode { margin-left: -6px; width: 40px; height: 40px; }
+  .brand { flex: 1 1 0; }
+  .brand b { font-size: clamp(16px, 4.6vw, 19px); }
+}

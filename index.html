@@ -17,7 +17,13 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ZZ Academy">
+<meta name="application-name" content="ZyeemZia Academy">
+<script src="zz-app.js?v=1" data-sw="/sw.js" data-name="ZyeemZia Academy" defer></script>
 <meta name="theme-color" content="#fbf8f2">
 <script>try{var t=localStorage.getItem('zzAcademyTheme');if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,6 +43,7 @@
     <nav class="links" aria-label="Sections">
       <a href="#routes">Routes</a><a href="#catalogue">Courses</a><a href="#finder">Where to start</a><a href="#play">Play</a><a href="#verify">Check a certificate</a><a href="#contact">Contact</a>
     </nav>
+    <span class="nav-install" data-zz-install></span>
     <button class="mode" id="modeBtn" type="button" aria-label="Switch between light and dark theme">
       <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
       <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
