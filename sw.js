@@ -7,7 +7,7 @@
  * the whole update. Styles and scripts are network-first, so they are always
  * current when online. Only this origin and only GET requests are touched.
  * Recovery: open any page with ?nosw=1. */
-const CACHE = 'zz-academy-v1';
+const CACHE = 'zz-academy-v2';
 const SHELL = ['/', '/index.html', '/style.css', '/app.js', '/data-academy.js', '/zz-app.js',
   '/manifest.webmanifest', '/favicon.ico', '/favicon-32.png', '/icon-192.png', '/icon-512.png',
   '/icon-maskable-512.png', '/apple-touch-icon.png', '/img/z-mark.webp', '/404.html'];
@@ -43,20 +43,28 @@ self.addEventListener('fetch', e => {
 
   if (isDoc(req)) {
     const key = url.pathname === '/' ? '/index.html' : url.pathname;
+    /* Both promises start now, and waitUntil is called synchronously: called
+       later, from inside an async callback, browsers may refuse it and stop the
+       worker before the refresh is saved. */
+    const cache = caches.open(CACHE);
+    const cachedP = cache.then(c => c.match(key, { ignoreSearch: true })).then(r => r || null, () => null);
+    const fresh = (async () => {
+      try {
+        const res = await fetch(key, { cache: 'no-store', credentials: 'same-origin' });
+        if (!res || !res.ok) return res && res.status === 404 ? res : null;
+        const c = await cache; const cached = await cachedP;
+        const a = await res.clone().text();
+        const b = cached ? await cached.clone().text() : null;
+        if (a !== b) await c.put(key, new Response(a, { headers: { 'Content-Type': res.headers.get('Content-Type') || 'text/html; charset=utf-8' } }));
+        if (b !== null && a !== b) await tell({ type: 'sw-update' });
+        return res;
+      } catch { return null; }
+    })();
+    e.waitUntil(fresh);
     e.respondWith((async () => {
-      const c = await caches.open(CACHE);
-      const cached = await c.match(key, { ignoreSearch: true });
-      const fresh = (async () => {
-        try {
-          const res = await fetch(new Request(key, { cache: 'reload' }));
-          if (!res || !res.ok) return res && res.status === 404 ? res : null;
-          const [a, b] = await Promise.all([res.clone().text(), cached ? cached.clone().text() : null]);
-          if (b === null || a !== b) await c.put(key, res.clone());
-          if (b !== null && a !== b) await tell({ type: 'sw-update' });
-          return res;
-        } catch { return null; }
-      })();
-      if (cached) { e.waitUntil(fresh); return cached; }
+      const cached = await cachedP;
+      if (cached) return cached;
+      const c = await cache;
       return (await fresh) || (await c.match('/index.html')) ||
         new Response('<h1>Offline</h1><p>Open ZyeemZia Academy once while online.</p>',
           { headers: { 'Content-Type': 'text/html; charset=utf-8' } });

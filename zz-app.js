@@ -157,7 +157,11 @@
       go();
     };
     bar.querySelector('.zz-x').onclick = () => bar.classList.remove('on');
-    requestAnimationFrame(() => bar.classList.add('on'));
+    /* Not requestAnimationFrame: a tab in the background never runs it, and the
+       bar must be there when the user comes back. A forced layout gives the
+       slide-in its starting point. */
+    void bar.offsetWidth;
+    bar.classList.add('on');
   }
 
   async function nuke() {
