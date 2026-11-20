@@ -7,7 +7,7 @@
  * the whole update. Styles and scripts are network-first, so they are always
  * current when online. Only this origin and only GET requests are touched.
  * Recovery: open any page with ?nosw=1. */
-const CACHE = 'zz-academy-v4';
+const CACHE = 'zz-academy-v5';
 const SHELL = ['/', '/index.html', '/style.css', '/app.js', '/data-academy.js', '/zz-app.js',
   '/manifest.webmanifest', '/favicon.ico', '/favicon-32.png', '/icon-192.png', '/icon-512.png',
   '/icon-maskable-512.png', '/apple-touch-icon.png', '/img/z-mark.webp', '/404.html'];

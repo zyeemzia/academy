@@ -20,6 +20,10 @@
   const me = document.currentScript;
   const SW = (me && me.dataset.sw) || '/sw.js';
   const NAME = (me && me.dataset.name) || document.title.split(/[·|—-]/)[0].trim();
+  /* The app icon's version. A phone copies the icon when the app is installed
+     and never fetches it again, whatever the site changes, so when an installed
+     copy is older than this the app says so, once, and shows how to refresh it. */
+  const ICONV = (me && me.dataset.icon) || '';
 
   const css = `
 .zz-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,175,85,.55);background:linear-gradient(135deg,rgba(212,175,85,.18),rgba(96,165,250,.14));color:inherit;font-family:inherit;font-size:.9rem;font-weight:600;line-height:1;padding:9px 14px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:transform .15s,box-shadow .2s}
@@ -130,6 +134,7 @@
         '<ol>' + iosSteps(i.app).map(s => '<li>' + s + '</li>').join('') + '</ol>' +
         '<ul><li>Opens full screen, like any app</li><li>Pages open even without signal</li><li>Updates itself, nothing to download</li></ul>' +
         '<button class="zz-ok">Got it</button>');
+      if (ICONV) store.set('icon', ICONV);
       return;
     }
     paint();
@@ -144,16 +149,16 @@
       setTimeout(() => location.reload(), 4000);   // belt and braces if controllerchange never fires
     });
   }
-  function showBar(go) {
+  function showBar(go, text, label) {
     if (!bar) {
       bar = document.createElement('div');
       bar.className = 'zz-bar'; bar.setAttribute('role', 'status'); bar.setAttribute('aria-live', 'polite');
       document.body.appendChild(bar);
     }
-    bar.innerHTML = '<span class="zz-dot" aria-hidden="true"></span><span>A new version of <b>' + esc(NAME) + '</b> is ready.</span>' +
-      '<button class="zz-go" type="button">Update now</button><button class="zz-x" type="button" aria-label="Later">&times;</button>';
+    bar.innerHTML = '<span class="zz-dot" aria-hidden="true"></span><span>' + (text || 'A new version of <b>' + esc(NAME) + '</b> is ready.') + '</span>' +
+      '<button class="zz-go" type="button">' + (label || 'Update now') + '</button><button class="zz-x" type="button" aria-label="Later">&times;</button>';
     bar.querySelector('.zz-go').onclick = () => {
-      bar.querySelector('.zz-go').textContent = 'Updating…';
+      if (!label) bar.querySelector('.zz-go').textContent = 'Updating…';
       go();
     };
     bar.querySelector('.zz-x').onclick = () => bar.classList.remove('on');
@@ -162,6 +167,28 @@
        slide-in its starting point. */
     void bar.offsetWidth;
     bar.classList.add('on');
+  }
+
+  /* ---------- a new app icon ---------- */
+  function iconSteps() {
+    const k = kind();
+    if (k === 'ios') return ['Press and hold the ' + esc(NAME) + ' icon on your Home Screen, then choose <b>Remove App</b>.', 'Open this site in Safari.', 'Tap <b>Share</b>, then <b>Add to Home Screen</b>.'];
+    if (k === 'android') return ['Press and hold the ' + esc(NAME) + ' icon, then choose <b>Uninstall</b> or drag it to <b>Uninstall</b>.', 'Open this site in Chrome.', 'Tap <b>Install app</b> at the top of the page.'];
+    return ['In the app window, open the <b>⋯</b> menu and choose <b>Uninstall</b>.', 'Open this site in your browser.', 'Click <b>Install</b> at the top of the page.'];
+  }
+  function checkIcon() {
+    if (!ICONV || !standalone()) return;
+    const had = store.get('icon');
+    if (had === ICONV || store.get('icon-told') === ICONV) return;
+    showBar(() => {
+      const img = iconUrl();
+      dialog((img ? '<img src="' + esc(img) + '" alt="">' : '') +
+        '<h2>Get the new icon</h2><p class="zz-sub">' + esc(NAME) + ' has a fresh app icon. Phones keep the icon from the day an app was installed, so reinstall once to see it. Nothing is lost: your progress stays in this browser.</p>' +
+        '<ol>' + iconSteps().map(s => '<li>' + s + '</li>').join('') + '</ol>' +
+        '<button class="zz-ok">Got it</button>');
+      store.set('icon-told', ICONV); bar.classList.remove('on');
+    }, '<b>' + esc(NAME) + '</b> has a new app icon.', 'How to get it');
+    bar.querySelector('.zz-x').onclick = () => { store.set('icon-told', ICONV); bar.classList.remove('on'); };
   }
 
   async function nuke() {
@@ -182,6 +209,7 @@
       (host || document.body).appendChild(btn);
       document.querySelectorAll('[data-zz-install-link]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); install(); }));
       paint();
+      setTimeout(checkIcon, 2500);
     } catch { /* page still works */ }
 
     if (!('serviceWorker' in navigator) || !/^https:$/.test(location.protocol) && location.hostname !== 'localhost') return;
@@ -212,7 +240,7 @@
   }
 
   addEventListener('beforeinstallprompt', e => { e.preventDefault(); prompt = e; paint(); });
-  addEventListener('appinstalled', () => { prompt = null; paint(); if (dlg && dlg.open) dlg.close(); });
+  addEventListener('appinstalled', () => { prompt = null; paint(); if (ICONV) store.set('icon', ICONV); if (dlg && dlg.open) dlg.close(); });
   try { matchMedia('(display-mode: standalone)').addEventListener('change', paint); } catch { /* old browser */ }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
