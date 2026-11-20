@@ -7,7 +7,7 @@
  * the whole update. Styles and scripts are network-first, so they are always
  * current when online. Only this origin and only GET requests are touched.
  * Recovery: open any page with ?nosw=1. */
-const CACHE = 'zz-academy-v2';
+const CACHE = 'zz-academy-v3';
 const SHELL = ['/', '/index.html', '/style.css', '/app.js', '/data-academy.js', '/zz-app.js',
   '/manifest.webmanifest', '/favicon.ico', '/favicon-32.png', '/icon-192.png', '/icon-512.png',
   '/icon-maskable-512.png', '/apple-touch-icon.png', '/img/z-mark.webp', '/404.html'];
@@ -48,13 +48,16 @@ self.addEventListener('fetch', e => {
        worker before the refresh is saved. */
     const cache = caches.open(CACHE);
     const cachedP = cache.then(c => c.match(key, { ignoreSearch: true })).then(r => r || null, () => null);
+    /* The copy to compare is read now, before the cached response is handed to
+       the browser: once its body has been sent it can no longer be read. */
+    const oldText = cachedP.then(r => (r ? r.clone().text() : null), () => null);
     const fresh = (async () => {
       try {
         const res = await fetch(key, { cache: 'no-store', credentials: 'same-origin' });
         if (!res || !res.ok) return res && res.status === 404 ? res : null;
-        const c = await cache; const cached = await cachedP;
+        const c = await cache;
         const a = await res.clone().text();
-        const b = cached ? await cached.clone().text() : null;
+        const b = await oldText;
         if (a !== b) await c.put(key, new Response(a, { headers: { 'Content-Type': res.headers.get('Content-Type') || 'text/html; charset=utf-8' } }));
         if (b !== null && a !== b) await tell({ type: 'sw-update' });
         return res;
