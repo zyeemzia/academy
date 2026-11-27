@@ -1,4 +1,6 @@
 /* ZyeemZia™ Academy · open campus · Copyright © ZyeemZia */
+/* Form controls use the page font; browsers otherwise fall back to Arial. */
+button, input, select, textarea { font-family: inherit; }
 :root {
   --bg: #fbf8f2; --bg-2: #f3eee3; --panel: #ffffff; --panel-2: #f7f3ea;
   --ink: #1d2433; --muted: #4a5368; --dim: #6b7385; --line: #e6dfd1; --line-2: #d6ccb8;
