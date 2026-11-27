@@ -8,6 +8,9 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,650&family=Plus+Jakarta+Sans:wght@400;600&display=swap">
 <style>
+/* Form controls use the page font; browsers otherwise fall back to Arial. */
+button, input, select, textarea { font-family: inherit; }
+
   :root { --bg: #fbf8f2; --ink: #1d2433; --muted: #4a5368; --brand: #2f4bd8; --on: #fff; color-scheme: light; }
   @media (prefers-color-scheme: dark) { :root { --bg: #0e1320; --ink: #eef1f8; --muted: #b9c1d4; --brand: #8fa2ff; --on: #0e1320; color-scheme: dark; } }
   body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--bg); color: var(--ink); font: 16px/1.6 'Plus Jakarta Sans', system-ui, sans-serif; text-align: center; padding: 24px; box-sizing: border-box; }
